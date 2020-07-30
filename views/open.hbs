@@ -1,0 +1,15 @@
+Create your room to start
+<form action="/open" method="POST">
+  <label>Name of the room</label><input type="text" name="roomName"></br>
+  <label>Write your link</label><input type="text" name="link" id="link">
+  <button type="submit">Post</button>
+</form>
+
+
+
+{{#each openRooms}}
+<hr>
+<h4>Name of the Room: {{roomName}}</h4>
+<h5>Creator: {{user.name}} {{user.surname}}</h5>
+<a href="{{link}}">Join the room</a>
+{{/each}}

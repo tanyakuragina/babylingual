@@ -1,0 +1,35 @@
+{
+  "name": "bibilingual",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanyakuragina/bibilingual.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tanyakuragina/bibilingual/issues"
+  },
+  "homepage": "https://github.com/tanyakuragina/bibilingual#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cookie-parser": "^1.4.5",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "handlebars": "^4.7.6",
+    "hbs": "^4.1.1",
+    "http-errors": "^1.8.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.9.26",
+    "morgan": "^1.10.0",
+    "session-file-store": "^1.4.0"
+  }
+}

@@ -1,0 +1,9 @@
+<a href="/">Profile</a>
+
+<h1>All bilinguals families</h1>
+
+<div>
+  {{#each users}}
+  <a href='/profile/{{_id}}'>{{this.name}} {{this.surname}} with {{this.childName}} speak {{this.nativeLanguage}}</a><br>
+  {{/each}}
+</div>
