@@ -99,16 +99,21 @@ router.get("/rooms", async (req, res) => {
 });
 
 router.post("/rooms", async (req, res, next) => {
-  try {
-    const { roomName, link } = req.body;
-    const room = new Room({
-      roomName,
-      link,
-    });
-    await room.save();
-    res.redirect("/rooms");
-  } catch (error) {
-    next(error);
+  let user = null;
+  if (req.session.user) {
+    user = req.session.user;
+    try {
+      const { roomName, link } = req.body;
+      const room = new Room({
+        roomName,
+        link,
+        userID: user._id,
+      });
+      await room.save();
+      res.redirect("/rooms");
+    } catch (error) {
+      next(error);
+    }
   }
 });
 
@@ -116,6 +121,41 @@ router.get("/room", (req, res) => {
   res.render("videoChat");
 });
 
+//отрисововываем edit
+router.get("/:id", async (req, res) => {
+  let room = await Room.findById(req.params.id);
+  res.render("edit", { id: req.params.id, room });
+});
+
+//update
+router.put("/:id", async function (req, res, next) {
+  console.log(req.body);
+  let user = null;
+  if (req.session.user) {
+    user = req.session.user;
+    let room = await Room.findById(req.params.id);
+    room.roomName = req.body.roomName;
+    room.link = req.body.link;
+    await room.save();
+    res.json({ message: true });
+  } else {
+    res.redirect("/");
+  }
+});
+
+//удаляем форму
+router.delete("/:id", async (req, res, next) => {
+  let user = null;
+  try {
+    if (req.session.user) {
+      user = req.session.user;
+      await Room.deleteOne({ _id: req.params.id });
+      res.redirect("/rooms");
+    }
+  } catch (err) {
+    return res.render("rooms", { errors: [err] });
+  }
+});
 // router.get("/room/:id", (req, res) => {
 //   const { id } = req.params;
 //   console.log(id);

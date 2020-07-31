@@ -4,21 +4,24 @@
 <a href="/room">Create A Room</a><br>
 <a href="/rooms">Find A Room</a><br>
 <a href="/logout">Logout</a>
-{{/if}}
-
-<h1>Create your room to start</h1>
-
-<form action="/rooms" method="POST">
-  <label>Name of the room</label><input type="text" name="roomName"></br>
-  <label>Write your link</label><input type="text" name="link" id="link">
-  <button type="submit">Post</button>
-</form>
-
-
 
 {{#each openRooms}}
 <hr>
 <h4>Name of the Room: {{roomName}}</h4>
 <h5>Creator: {{user.name}} {{user.surname}}</h5>
 <a href="{{link}}">Join the room</a>
+<button type="submit"><a href="/{{_id}}">edit</a></button>
+<button type="submit"><a name="delete" href="/{{_id}}">delete</a></button>
 {{/each}}
+{{else}}
+
+<a href="/">BabyLingual</a>
+
+<h1>Login</h1>
+<form class="form-inline" action="/login" method="POST" class="form-control mr-sm-2">
+  <input id="email" type="text" name="email" placeholder="Email address">
+  <input id="password" type="password" name="password" placeholder="Password">
+  <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Log in</button>
+</form>
+
+{{/if}}
