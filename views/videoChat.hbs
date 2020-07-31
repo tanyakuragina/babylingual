@@ -2,9 +2,9 @@
 
 
 
-<h4 class="d-flex">Create your room to start</h4>
-<div class="d-flex">
-  <form action="/rooms" method="POST" id="newRoom">
+<h4 class="d-flex ml-2 mt-2">Create your room to start</h4>
+<div class="d-flex ml-2">
+  <form action="/rooms" method="POST" id="createRoom">
     <div class="form-group">
       <label for="exampleInputEmail1" class="d-flex justify-content-center">Name of the room</label>
       <input type="text" class="form-control" id="exampleInputEmail1" name="roomName" aria-describedby="emailHelp"
@@ -18,6 +18,13 @@
       <button type="submit" class="btn btn-primary">Share</button>
     </div>
   </form>
+  <div class="mx-auto">
+    <h2>You can use dictionary</h2>
+    <form action="/word" id="newForm">
+      <input type="text" name="word" id="word" placeholder="word">
+      <button type="submit">Get Word</button>
+    </form>
+  </div>
 </div>
 {{!-- <form action="/rooms" method="POST">
   <label>Name of the room</label><input type="text" name="roomName"></br>
@@ -25,11 +32,6 @@
   <button type="submit">Post</button>
 </form> --}}
 
-<h2>You can use dictionary</h2>
-<form action="/word" id="newForm">
-  <input type="text" name="word" id="word" placeholder="word">
-  <button type="submit">Get Word</button>
-</form>
 
 
 <div class="video">

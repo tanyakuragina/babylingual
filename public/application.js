@@ -1,5 +1,9 @@
 const form = document.getElementById("editForm");
 const newForm = document.getElementById("newForm");
+const createRoom = document.getElementById("createRoom");
+const input = document.getElementById("word");
+const inputRoom = document.getElementById("exampleInputEmail1");
+const inputLink = document.getElementById("exampleInputPassword1");
 
 form?.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -38,7 +42,39 @@ document.addEventListener("click", async (event) => {
 
 newForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  console.log("ss");
-  const resp = await (await fetch("/get/smth/word", {method: 'PUT'})).json();
-  console.log(resp);
+  try {
+    console.log(input.value);
+    console.log("ss");
+    const resp = await (
+      await fetch(`/get/smth`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify({ word: input.value }),
+      })
+    ).json();
+  } catch (e) {
+    console.error(e.message);
+  }
+});
+
+createRoom.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  try {
+    const resp = await fetch("/rooms", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify({
+        roomName: inputRoom.value,
+        link: inputLink.value,
+      }),
+    }).json();
+  } catch (e) {
+    console.error(e.message);
+  }
 });

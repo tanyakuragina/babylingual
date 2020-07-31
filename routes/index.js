@@ -98,6 +98,7 @@ router.get("/rooms", async (req, res) => {
   res.render("rooms", { openRooms, user });
 });
 
+//create room
 router.post("/rooms", async (req, res, next) => {
   let user = null;
   if (req.session.user) {
@@ -157,11 +158,12 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
-router.put("/get/smth/word", async (req, res) => {
+router.put("/get/smth", async (req, res) => {
+  const word = req.body.word;
+  console.log(req.body);
   try {
-    console.log("hello");
     const resp = await (
-      await fetch("https://owlbot.info/api/v4/dictionary/owl", {
+      await fetch(`https://owlbot.info/api/v4/dictionary/${word}`, {
         headers: {
           Authorization: "Token 3b7de2fe49777101ba7d0d2e4c0a3cd3adf5e375",
         },
@@ -169,8 +171,9 @@ router.put("/get/smth/word", async (req, res) => {
       })
     ).json();
     console.log(resp);
+    res.json(resp);
   } catch (error) {
-    console.log(error);
+    res.status(500).json(null);
   }
 });
 
