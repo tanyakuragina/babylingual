@@ -1,9 +1,36 @@
-<a href="/">Profile</a>
+<div class="row">
+  <div class="d-flex">
+    <div class="col-3 m-3">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
-<h1>All bilinguals families</h1>
+        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="/profile" role="tab"
+          aria-controls="v-pills-home" aria-selected="true">Profile</a>
 
-<div>
-  {{#each users}}
-  <a href='/profile/{{_id}}'>{{this.name}} {{this.surname}} with {{this.childName}} speak {{this.nativeLanguage}}</a><br>
-  {{/each}}
+        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="/" role="tab"
+          aria-controls="v-pills-profile" aria-selected="false">Dashboard</a>
+
+        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="/all-bilinguals" role="tab"
+          aria-controls="v-pills-profile" aria-selected="false">Show all biliguals</a>
+        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="/room" role="tab"
+          aria-controls="v-pills-messages" aria-selected="false">Create A Room</a>
+        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="/rooms" role="tab"
+          aria-controls="v-pills-messages" aria-selected="false">Find A Room</a>
+        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="/logout" role="tab"
+          aria-controls="v-pills-messages" aria-selected="false">Logout</a>
+      </div>
+    </div>
+
+
+    <div class="d-flex justify-content-center">
+      <h1>All bilinguals families</h1>
+      {{!-- <div class="list-group d-flex justify-content-center "> --}}
+      {{!-- </div> --}}
+    </div>
+  </div>
 </div>
+
+{{#each users}}
+<a href='/profile/{{_id}}'>{{this.name}}
+  {{this.surname}} with
+  {{this.childName}} speak {{this.nativeLanguage}}</a><br>
+{{/each}}

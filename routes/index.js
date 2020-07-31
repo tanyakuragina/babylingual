@@ -89,12 +89,16 @@ router.get("/video-chat/:id", (req, res) => {
   res.render("videoChat");
 });
 
-router.get("/open", async (req, res) => {
+router.get("/rooms", async (req, res) => {
+  let user = null;
+  if (req.session.user) {
+    user = req.session.user;
+  }
   const openRooms = await Room.find({});
-  res.render("open", { openRooms });
+  res.render("rooms", { openRooms, user });
 });
 
-router.post("/open", async (req, res, next) => {
+router.post("/rooms", async (req, res, next) => {
   try {
     const { roomName, link } = req.body;
     const room = new Room({
@@ -102,7 +106,7 @@ router.post("/open", async (req, res, next) => {
       link,
     });
     await room.save();
-    res.redirect("/open");
+    res.redirect("/rooms");
   } catch (error) {
     next(error);
   }

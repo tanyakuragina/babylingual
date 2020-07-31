@@ -1,5 +1,14 @@
-Create your room to start
-<form action="/open" method="POST">
+{{#if user}}
+<a href="/profile">My Profile</a><br>
+<a href="/all-bilinguals">Show all biliguals</a><br>
+<a href="/room">Create A Room</a><br>
+<a href="/rooms">Find A Room</a><br>
+<a href="/logout">Logout</a>
+{{/if}}
+
+<h1>Create your room to start</h1>
+
+<form action="/rooms" method="POST">
   <label>Name of the room</label><input type="text" name="roomName"></br>
   <label>Write your link</label><input type="text" name="link" id="link">
   <button type="submit">Post</button>
