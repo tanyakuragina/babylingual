@@ -1,4 +1,5 @@
 const form = document.getElementById("editForm");
+const newForm = document.getElementById("newForm");
 
 form?.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -35,4 +36,9 @@ document.addEventListener("click", async (event) => {
   }
 });
 
-
+newForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  console.log("ss");
+  const resp = await (await fetch("/get/smth/word", {method: 'PUT'})).json();
+  console.log(resp);
+});

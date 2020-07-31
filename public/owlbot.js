@@ -10,3 +10,7 @@ client.define('owl').then(function(result){
 client.define('cat').then(function(result){
   console.log(result);
 });
+
+client.define('dog').then(function(result){
+  console.log(result);
+});

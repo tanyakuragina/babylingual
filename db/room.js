@@ -12,6 +12,4 @@ const roomSchema = mongoose.Schema({
   userID: { type: mongoose.Schema.Types.ObjectId, ref: "users" },
 });
 
-
-
 module.exports = mongoose.model("Room", roomSchema);

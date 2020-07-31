@@ -2,7 +2,7 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const User = require("../db/user");
 const Room = require("../db/room");
-
+const fetch = require("node-fetch");
 const saltRounds = 10;
 const router = express.Router();
 
@@ -110,7 +110,7 @@ router.post("/rooms", async (req, res, next) => {
         userID: user._id,
       });
       await room.save();
-      res.redirect("/rooms");
+      res.redirect("/room");
     } catch (error) {
       next(error);
     }
@@ -156,17 +156,22 @@ router.delete("/:id", async (req, res, next) => {
     return res.render("rooms", { errors: [err] });
   }
 });
-// router.get("/room/:id", (req, res) => {
-//   const { id } = req.params;
-//   console.log(id);
-//   const url = req.protocol + "://" + req.get("host") + req.baseUrl + id;
-//   req.session.url = url;
-//   console.log(url);
-//   if (req.session.user) {
-//     res.redirect(url);
-//   } else {
-//     res.redirect("/");
-//   }
-// });
+
+router.put("/get/smth/word", async (req, res) => {
+  try {
+    console.log("hello");
+    const resp = await (
+      await fetch("https://owlbot.info/api/v4/dictionary/owl", {
+        headers: {
+          Authorization: "Token 3b7de2fe49777101ba7d0d2e4c0a3cd3adf5e375",
+        },
+        method: "GET",
+      })
+    ).json();
+    console.log(resp);
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 module.exports = router;

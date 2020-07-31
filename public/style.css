@@ -27,7 +27,7 @@ video {
   height: 100vh;
   display: flex;
   height: 100vh;
-  margin: 0;
+  margin: 0px;
   align-items: center;
   justify-content: center;
   padding: 0 50px;
