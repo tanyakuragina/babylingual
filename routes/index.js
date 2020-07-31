@@ -94,7 +94,7 @@ router.get("/rooms", async (req, res) => {
   if (req.session.user) {
     user = req.session.user;
   }
-  const openRooms = await Room.find({});
+  const openRooms = await Room.find({}).populate('userID');
   res.render("rooms", { openRooms, user });
 });
 

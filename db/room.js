@@ -9,7 +9,7 @@ const roomSchema = mongoose.Schema({
   link: {
     type: String,
   },
-  userID: { type: mongoose.Schema.Types.ObjectId, ref: "users" },
+  userID: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 });
 
 module.exports = mongoose.model("Room", roomSchema);

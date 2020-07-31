@@ -44,7 +44,7 @@
     <tr>
       <th scope="row">-</th>
       <td>{{roomName}}</td>
-      <td>{{userID}}</td>
+      <td><a href="/profile/{{userID._id}}">{{userID.name}} {{userID.surname}}</a></td>
       <td><a href="{{link}}">Join the room</a></td>
       <td><button type="submit"><a href="/{{_id}}">edit</a></button>
         <button type="submit"><a name="delete" href="/{{_id}}">delete</a></button></td>
