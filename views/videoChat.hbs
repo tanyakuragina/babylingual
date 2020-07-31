@@ -1,11 +1,20 @@
 <div class="copy">Send your URL to a friend to start a video call</div>
-<h1>Create your room to start</h1>
+
+
+<h2>Create your room to start</h2>
 
 <form action="/rooms" method="POST">
   <label>Name of the room</label><input type="text" name="roomName"></br>
   <label>Write your link</label><input type="text" name="link" id="link">
   <button type="submit">Post</button>
 </form>
+
+<h2>You can use dictionary</h2>
+<form action="/word">
+  <input type="text" name="word" id="word" placeholder="word">
+  <button>Get Word</button>
+</form>
+
 
 <div class="video">
   <video id="localVideo" autoplay muted></video>
