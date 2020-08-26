@@ -77,7 +77,6 @@ router.get("/logout", async (req, res, next) => {
 
 router.get("/all-bilinguals", async (req, res) => {
   const users = await User.find({});
-  console.log(users);
   res.render("all-bilinguals", { users });
 });
 
@@ -130,7 +129,6 @@ router.get("/:id", async (req, res) => {
 
 //update
 router.put("/:id", async function (req, res, next) {
-  console.log(req.body);
   let user = null;
   if (req.session.user) {
     user = req.session.user;
@@ -160,7 +158,6 @@ router.delete("/:id", async (req, res, next) => {
 
 router.put("/get/smth", async (req, res) => {
   const word = req.body.word;
-  console.log(req.body);
   try {
     const resp = await (
       await fetch(`https://owlbot.info/api/v4/dictionary/${word}`, {
@@ -170,7 +167,6 @@ router.put("/get/smth", async (req, res) => {
         method: "GET",
       })
     ).json();
-    console.log(resp);
     res.json(resp);
   } catch (error) {
     res.status(500).json(null);
