@@ -32,7 +32,7 @@
     "method-override": "^3.0.0",
     "mongoose": "^5.9.26",
     "morgan": "^1.10.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "owlbot-js": "^2.0.0",
     "session-file-store": "^1.4.0"
   }
